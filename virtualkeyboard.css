@@ -1,0 +1,186 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.virtualkeyboard {
+  font-family: "Microsoft Yahei", "Hiragino Sans GB", tahoma, arial;
+  position: absolute;
+  width: 760px;
+  height: 310px;
+  border: 1px solid #999;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(200,200,200,0);
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+
+.virtualkeyboard .letterWrap>.inputCut {
+  font-size: 16px;
+  /* font-weight: bold; */
+}
+
+.virtualkeyboard .letterWrap>.backspace {
+  width: 55px;
+}
+
+.virtualkeyboard .letterWrap {
+  width: 750px;
+}
+
+.virtualkeyboard .number-one,
+.virtualkeyboard .letter-a {
+  margin-left: 40px;
+}
+
+.letterWrap>li {
+  float: left;
+  font-size: 30px;
+  width: 55px;
+  border-radius: 10px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  background: white;
+  cursor: pointer;
+}
+
+.inputZone {
+  background: #DBDBDB;
+  height: calc(100% - 50px);
+  overflow: hidden;
+}
+
+.letterWrap {
+  width: 680px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.letterWrap>li:active{
+  background: #eee;
+}
+
+.virtualkeyboard li{
+  list-style: none;
+}
+
+.virtualkeyboard .toUpper {
+  font-size: 16px;
+  color: #fd910a;
+}
+.upperCase{
+  color: #fd910a;
+}
+
+.keyboardOp {
+  background: white;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.keyboardOp>span {
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+.keyboardOp>.slideDown {
+  float: right;
+  color: #69759B;
+  font-size: 20px;
+}
+
+.keyboardOp>.select {
+  color: #fd910a;
+}
+
+.outputZone {
+  display: none;
+  position: absolute;
+  width: 760px;
+  background: white;
+  height: 60px;
+  left: -1px;
+  top: -60px;
+  border: 1px solid #999;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-size: 18px;
+
+}
+
+.outputZone>ul {
+  height: 50%
+}
+
+.output-letter {
+  border-bottom: 1px solid #ccc;
+}
+
+.outputZoneOp {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.outputZoneOp>span {
+  display: inline-block;
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  float: left;
+  font-size: 25px;
+  cursor: pointer;
+
+}
+.outputZoneOp>span:active{
+  color: red;
+}
+.output-ZH{
+  margin-left: -10px;
+}
+.output-ZH>li {
+  padding: 0 10px;
+  cursor: pointer;
+  float: left;
+}
+.output-ZH>li:active {
+  color: red;
+}
+.virtualkeyboard .backspace {
+  font-family: 'iconfont';
+  font-size: 16px;
+}
+
+.virtualkeyboard .inputCut {
+  color: #fd910a;
+}
+
+.virtualkeyboard .unclick{
+  color: #999;
+  cursor: not-allowed;
+}
+.virtualkeyboard .hide{
+  display: none;
+}
+.outputZone .page{
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+}
