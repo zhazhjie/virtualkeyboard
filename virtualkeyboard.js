@@ -65,56 +65,59 @@
             temp += '</ul>'
             temp += '</div>'
             temp += '</div>'
-
-            $(window).on('click', function(e) {
-                if (!$(e.target).parents('.virtualkeyboard').length) {
-                        $('.virtualkeyboard').hide();
-                    } 
-                    var el = $(e.target);
-                    switch (true) {
-                        case e.target.type=='text':
-                            if( new Date().getTime() - defaults.time < 300&&defaults.el==e.target ){
-                                if ($('.virtualkeyboard').length) {
-                                    $('.virtualkeyboard').show();
-                                } else {
-                                    $(temp).appendTo('body');
-                                }
-                            }else{
-                                defaults.time = new Date().getTime();
-                                defaults.el=e.target
-                            }
-                            break;
-                        case el.hasClass('number'):
-                        case el.hasClass('letter'):
-                            input(e);
-                            break;
-                        case el.hasClass('symbol'):
-                            symbolOutput(e);
-                            break;    
-                        case el.hasClass('word'):
-                            output(e);
-                            break;
-                        case el.hasClass('backspace'):
-                            backspace(e);
-                            break;
-                        case el.hasClass('toUpper'):
-                            toUpper(e);
-                            break;
-                        case el.hasClass('inputCut'):
-                            inputCut(e);
-                            break;
-                        case el.hasClass('outputZoneUp'):
-                            pageUp(e);
-                            break;
-                        case el.hasClass('outputZoneDown'):
-                            pageDown(e);
-                            break;
-                        case el.hasClass('slideDown'):
-                            $('.virtualkeyboard').hide();
-                            break;
+            $(this).on('click', function(e) {
+                if (e.target.type == 'text') {
+                    if (new Date().getTime() - defaults.time < 300 && defaults.el == e.target) {
+                        if ($('.virtualkeyboard').length) {
+                            $('.virtualkeyboard').show();
+                        } else {
+                            $(temp).appendTo('body');
+                        }
+                    } else {
+                        defaults.time = new Date().getTime();
+                        defaults.el = e.target
                     }
-                    
-                    $(defaults.el).focus();
+
+                }
+
+            });
+            $(window).on('click', function(e) {
+                var el = $(e.target);
+                if (!el.parents('.virtualkeyboard').length && e.target.type !== 'text') {
+                    $('.virtualkeyboard').hide();
+                }
+                switch (true) {
+                    case el.hasClass('number'):
+                    case el.hasClass('letter'):
+                        input(e);
+                        break;
+                    case el.hasClass('symbol'):
+                        symbolOutput(e);
+                        break;
+                    case el.hasClass('word'):
+                        output(e);
+                        break;
+                    case el.hasClass('backspace'):
+                        backspace(e);
+                        break;
+                    case el.hasClass('toUpper'):
+                        toUpper(e);
+                        break;
+                    case el.hasClass('inputCut'):
+                        inputCut(e);
+                        break;
+                    case el.hasClass('outputZoneUp'):
+                        pageUp(e);
+                        break;
+                    case el.hasClass('outputZoneDown'):
+                        pageDown(e);
+                        break;
+                    case el.hasClass('slideDown'):
+                        $('.virtualkeyboard').hide();
+                        break;
+                }
+
+                $(defaults.el).focus();
             });
             $('html').on('mousedown', '.keyboardOp', down)
             $('html').on('touchstart', '.keyboardOp', down)
@@ -153,7 +156,7 @@
         } else {
             $('.virtualkeyboard .outputZoneDown').removeClass('unclick')
         }
-        defaults.page=1;
+        defaults.page = 1;
         $('.virtualkeyboard .outputZoneUp').addClass('unclick')
         pageUpdate(count)
     };
@@ -192,8 +195,8 @@
         if (key.text()) {
             key.text(key.text().substring(0, key.text().length - 1));
             updateVal(e)
-            if(!key.text()){
-            	emptyZH(e);
+            if (!key.text()) {
+                emptyZH(e);
             }
         } else {
             var focusEl = $(defaults.el);
@@ -277,8 +280,8 @@
         }
     }
 
-    function pageUpdate(count){
-        $('.virtualkeyboard .page').text(defaults.page+'/'+(Math.ceil(count/defaults.num)||'1'))
+    function pageUpdate(count) {
+        $('.virtualkeyboard .page').text(defaults.page + '/' + (Math.ceil(count / defaults.num) || '1'))
     }
 
     function down(e) {
