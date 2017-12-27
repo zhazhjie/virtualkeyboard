@@ -1,5 +1,5 @@
 # virtualkeyboard
-jQuery虚拟键盘、输入法，支持中英切换
+jQuery虚拟键盘、输入法，支持中英切换/n
 使用方法：
 1、引用.js和.css
 2、全局使用：$('body').virtualkeyboard();
