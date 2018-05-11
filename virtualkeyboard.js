@@ -285,26 +285,28 @@
     }
 
     function down(e) {
+        e.preventDefault();
         var e = e.type.match('mouse') ? e : e.originalEvent.changedTouches[0]
         defaults.offsetX = (e.pageX - $('.virtualkeyboard')[0].offsetLeft);
         defaults.offsetY = (e.pageY - $('.virtualkeyboard')[0].offsetTop);
-        $('.keyboardOp').on('mousemove', move);
-        $('.keyboardOp').on('mouseup', up);
-        $('.keyboardOp').on('touchmove', move);
-        $('.keyboardOp').on('touchend', up);
+        $('html,body').on('mousemove', move);
+        $('html,body').on('mouseup', up);
+        $('html,body').on('touchmove', move);
+        $('html,body').on('touchend', up);
     }
 
     function move(e) {
+        e.preventDefault();
         var e = e.type.match('mouse') ? e : e.originalEvent.changedTouches[0];
         $('.virtualkeyboard')[0].style.left = (e.pageX - defaults.offsetX) + 'px';
         $('.virtualkeyboard')[0].style.top = (e.pageY - defaults.offsetY) + 'px';
     }
 
     function up() {
-        $('.keyboardOp').off('mousemove', move);
-        $('.keyboardOp').off('mouseup', up);
-        $('.keyboardOp').off('touchmove', move);
-        $('.keyboardOp').off('touchend', up);
+        $('html,body').off('mousemove', move);
+        $('html,body').off('mouseup', up);
+        $('html,body').off('touchmove', move);
+        $('html,body').off('touchend', up);
     }
 
     var dictionary = {
