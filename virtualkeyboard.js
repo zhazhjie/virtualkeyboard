@@ -119,8 +119,8 @@
 
                 $(defaults.el).focus();
             });
-            $('html').on('mousedown', '.keyboardOp', down)
-            $('html').on('touchstart', '.keyboardOp', down)
+            $('html,body').on('mousedown', '.keyboardOp', down)
+            $('html,body').on('touchstart', '.keyboardOp', down)
         }
     });
     //默认参数
